@@ -1,51 +1,322 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#123b32">
-  <meta name="description" content="Prakruthi Boys & Girls Hostel, Vasavi Nagar, near Honda showroom, Puttur. Ask about rooms, rent and meals.">
-  <title>Prakruthi Hostel | Puttur</title>
-  <link rel="stylesheet" href="/styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Prakruthi Hostel | Book Your Stay</title>
+<meta name="description" content="Explore 4-sharing and 6-sharing rooms at Prakruthi Hostel, Puttur. Contact us for rent and availability.">
+
+<style>
+:root {
+  --green: #174b38;
+  --cream: #f7f5ed;
+  --gold: #c7a56a;
+  --text: #23342a;
+}
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--cream);
+  color: var(--text);
+}
+header {
+  background: white;
+  padding: 16px 6%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 5;
+  box-shadow: 0 2px 12px #0000000d;
+}
+.logo { color: var(--green); font-size: 21px; font-weight: bold; }
+nav { display: flex; gap: 18px; flex-wrap: wrap; }
+nav a { color: var(--green); text-decoration: none; font-size: 14px; }
+.hero {
+  background: linear-gradient(120deg, #123a2b, #286348);
+  color: white;
+  padding: 75px 7%;
+  display: grid;
+  grid-template-columns: 1.1fr .9fr;
+  gap: 35px;
+  align-items: center;
+}
+.hero h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.12; margin: 12px 0; }
+.hero h1 span { color: #e4c58d; }
+.hero p { line-height: 1.8; color: #e0e9e2; }
+.hero-image {
+  min-height: 320px;
+  background: url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1000&q=85") center/cover;
+  border-radius: 12px;
+}
+.button {
+  display: inline-block;
+  background: var(--gold);
+  color: #172f23;
+  padding: 13px 20px;
+  border: 0;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  cursor: pointer;
+}
+.button-green { background: var(--green); color: white; }
+section { padding: 65px 7%; }
+.section-title { text-align: center; margin-bottom: 35px; }
+.section-title h2 { font-size: 34px; color: var(--green); margin-bottom: 10px; }
+.section-title p { color: #66746a; }
+.rooms {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 25px;
+}
+.card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 8px 28px #183e2a12;
+}
+.card img { width: 100%; height: 250px; object-fit: cover; display: block; }
+.card-content { padding: 24px; }
+.card h3 { color: var(--green); font-size: 25px; margin: 0 0 10px; }
+.price { font-size: 20px; font-weight: bold; color: #9a7132; margin: 15px 0; }
+.card ul { padding-left: 20px; line-height: 1.9; color: #58685d; font-size: 14px; }
+.card .button { width: 100%; text-align: center; }
+.features {
+  background: #e7ecdf;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+.feature { background: white; padding: 22px; border-radius: 8px; }
+.feature h3 { color: var(--green); }
+.feature p { font-size: 14px; line-height: 1.7; color: #66746a; }
+.booking {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  align-items: start;
+}
+.booking h2 { font-size: 35px; color: var(--green); }
+form {
+  background: white;
+  padding: 25px;
+  border-radius: 10px;
+}
+label { display: block; font-size: 14px; font-weight: bold; margin: 13px 0 6px; }
+input, select, textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #d9ded6;
+  border-radius: 5px;
+  font: inherit;
+  background: #fff;
+}
+form button { width: 100%; margin-top: 18px; }
+.location { background: var(--green); color: white; text-align: center; }
+.location h2 { font-size: 34px; }
+.location p { line-height: 1.9; }
+footer {
+  background: #102c20;
+  color: #dce7df;
+  padding: 25px 7%;
+  text-align: center;
+  font-size: 13px;
+}
+.whatsapp {
+  position: fixed;
+  bottom: 18px;
+  right: 18px;
+  z-index: 10;
+  background: #16874a;
+  color: white;
+  padding: 14px 18px;
+  border-radius: 30px;
+  text-decoration: none;
+  font-weight: bold;
+  box-shadow: 0 5px 18px #0003;
+}
+@media(max-width: 700px) {
+  header { flex-wrap: wrap; }
+  nav { width: 100%; justify-content: space-between; gap: 8px; }
+  nav a { font-size: 12px; }
+  .hero, .booking { grid-template-columns: 1fr; }
+  .hero { padding: 48px 6%; }
+  .hero-image { min-height: 230px; }
+  section { padding: 48px 6%; }
+  .rooms, .features { grid-template-columns: 1fr; }
+  .section-title h2 { font-size: 29px; }
+}
+</style>
 </head>
+
 <body>
-<header class="topbar">
-  <a class="brand" href="#"><span class="logo">P</span><span><b>Prakruthi</b><small>BOYS &amp; GIRLS HOSTEL</small></span></a>
-  <nav><a href="#rooms">Rooms</a><a href="#food">Food</a><a href="#location">Location</a><a href="/admin.html" class="admin-link">Owner login</a></nav>
+<header>
+  <div class="logo">🌿 Prakruthi Hostel</div>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#rooms">Rooms</a>
+    <a href="#facilities">Facilities</a>
+    <a href="#booking">Book a Room</a>
+    <a href="#location">Location</a>
+  </nav>
 </header>
-<section class="hero">
-  <div class="hero-copy">
-    <p class="kicker">A COMFORTABLE PLACE TO STAY</p>
-    <h1>Feel at home.<br><em>Focus on your future.</em></h1>
-    <p>Student accommodation in Vasavi Nagar, near Honda showroom, Puttur, Andhra Pradesh.</p>
-    <div class="buttons"><a class="btn" href="#rooms">Explore room options</a><a class="btn outline" href="#enquire">Enquire now ↗</a></div>
-    <div class="hero-badges"><span>✓ Multiple room types</span><span>✓ Veg &amp; non-veg food options</span></div>
+
+<main>
+<section class="hero" id="home">
+  <div>
+    <p>WELCOME TO PRAKRUTHI HOSTEL</p>
+    <h1>Your comfort.<br>Your space.<br><span>Your stay.</span></h1>
+    <p>Explore our 4-sharing and 6-sharing room options in Vasavi Nagar, Puttur. Contact us to check rent, vacancies and facilities.</p>
+    <a class="button" href="#rooms">Explore Rooms ↓</a>
   </div>
-  <div class="hero-image"><img src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?auto=format&fit=crop&w=1300&q=85" alt="Example of a bright bedroom"><div class="image-label"><b>Prakruthi Hostel</b><small>Vasavi Nagar · Puttur</small></div></div>
+  <div class="hero-image" role="img" aria-label="Illustrative shared accommodation photo"></div>
 </section>
-<section class="quick-facts"><div><b>₹5,000</b><span>Monthly rent starting point*</span></div><div><b>Room choices</b><span>Ask about current availability</span></div><div><b>Meals</b><span>Veg and non-veg options</span></div></section>
-<section class="section" id="rooms">
-  <div class="heading"><p class="kicker">ROOM OPTIONS</p><h2>Choose your <em>space.</em></h2><p>Sample categories only. Confirm the actual room type, rent and availability with the owner.</p></div>
-  <div class="cards">
-    <article class="room"><img src="https://images.unsplash.com/photo-1631049307264-da0ec9d70304?auto=format&fit=crop&w=900&q=80" alt="Example shared bedroom"><div class="room-body"><span class="tag">Shared</span><h3>Shared room</h3><p>Ask about bed count, facilities and monthly charges.</p><div class="room-foot"><b>From ₹5,000/month*</b><button class="enquire-room" data-room="Shared room">Ask about room ↗</button></div></div></article>
-    <article class="room"><img src="https://images.unsplash.com/photo-1616594039964-ae9021a400a0?auto=format&fit=crop&w=900&q=80" alt="Example bedroom"><div class="room-body"><span class="tag">Private</span><h3>Private room</h3><p>Check whether a private room is available and its price.</p><div class="room-foot"><b>Price on confirmation</b><button class="enquire-room" data-room="Private room">Ask about room ↗</button></div></div></article>
-    <article class="room"><img src="https://images.unsplash.com/photo-1595526114035-0d45ed16cfbf?auto=format&fit=crop&w=900&q=80" alt="Example room with study space"><div class="room-body"><span class="tag">Student stay</span><h3>Student accommodation</h3><p>Ask about sharing options, rules and facilities.</p><div class="room-foot"><b>Price on confirmation</b><button class="enquire-room" data-room="Student accommodation">Ask about room ↗</button></div></div></article>
+
+<section id="rooms">
+  <div class="section-title">
+    <h2>Choose Your Room</h2>
+    <p>Choose your sharing option and contact us for the current price.</p>
   </div>
-  <p class="disclaimer">*₹5,000 is the rent figure supplied by the owner, shown as a starting point only until room-wise prices are confirmed. Photos are illustrative and must be replaced with actual property photos.</p>
+
+  <div class="rooms">
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80"
+           alt="Illustrative shared hostel bedroom">
+      <div class="card-content">
+        <h3>4-Sharing Room</h3>
+        <p>Shared accommodation for up to four residents.</p>
+        <div class="price">Contact for Price</div>
+        <ul>
+          <li>Four-person sharing option</li>
+          <li>Ask about available beds</li>
+          <li>Confirm included facilities</li>
+          <li>Ask about food and monthly rent</li>
+        </ul>
+        <button class="button button-green" onclick="chooseRoom('4-sharing')">Enquire About 4-Sharing</button>
+      </div>
+    </article>
+
+    <article class="card">
+      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80"
+           alt="Illustrative shared accommodation room">
+      <div class="card-content">
+        <h3>6-Sharing Room</h3>
+        <p>Shared accommodation for up to six residents.</p>
+        <div class="price">Contact for Price</div>
+        <ul>
+          <li>Six-person sharing option</li>
+          <li>Ask about available beds</li>
+          <li>Confirm included facilities</li>
+          <li>Ask about food and monthly rent</li>
+        </ul>
+        <button class="button button-green" onclick="chooseRoom('6-sharing')">Enquire About 6-Sharing</button>
+      </div>
+    </article>
+  </div>
+  <p style="font-size:12px;color:#66746a;margin-top:20px">
+    Note: The room pictures are examples. Replace them with actual hostel photos before publishing.
+  </p>
 </section>
-<section class="section features" id="food"><div class="food-img"><img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=1200&q=85" alt="Example meal"></div><div><p class="kicker">FOOD &amp; DAILY LIVING</p><h2>Veg and non-veg.<br><em>Ask for the menu.</em></h2><p>Contact the owner to confirm which meals are provided, weekly menu, meal timings and whether food is included in the rent.</p><ul><li>Vegetarian and non-vegetarian options</li><li>Confirm breakfast, lunch and dinner availability</li><li>Ask about water, Wi-Fi, laundry and other facilities</li></ul><a class="btn" href="#enquire">Ask about meals</a></div></section>
-<section class="section enquire-section" id="enquire"><div><p class="kicker">START A CONVERSATION</p><h2>Enquire about<br><em>your stay.</em></h2><p>Complete the form. WhatsApp will open with a prepared enquiry message; your room is not reserved until the owner confirms it.</p><div class="address-box"><b>⌖ Prakruthi Boys &amp; Girls Hostel</b><span>Vasavi Nagar, near Honda showroom, Puttur, Andhra Pradesh</span></div></div>
-<form id="enquiry-form">
-  <label>Full name<input name="name" required autocomplete="name" placeholder="Enter your name"></label>
-  <label>Your phone number<input name="phone" required inputmode="tel" pattern="[0-9 +()-]{10,18}" placeholder="Enter contact number"></label>
-  <label>Room preference<select name="room"><option>Shared room</option><option>Private room</option><option>Student accommodation</option><option>Not sure yet</option></select></label>
-  <label>Expected move-in date<input type="date" name="date"></label>
-  <label>Message<textarea name="message" rows="3" placeholder="Questions about rent, meals or facilities"></textarea></label>
-  <button class="btn full" type="submit">Continue on WhatsApp ↗</button>
-  <small class="disclaimer">Do not submit passwords, bank details or card information here.</small>
-</form></section>
-<section class="section map-section" id="location"><div class="heading"><p class="kicker">VISIT US</p><h2>Find <em>Prakruthi.</em></h2><p>Vasavi Nagar, near Honda showroom, Puttur, Andhra Pradesh.</p><a class="btn" target="_blank" rel="noopener" href="https://www.google.com/maps/search/?api=1&query=Prakruthi+Boys+Girls+Hostel+Vasavi+Nagar+near+Honda+showroom+Puttur+Andhra+Pradesh">Open Google Maps ↗</a></div></section>
-<footer><a class="brand footer-brand" href="#"><span class="logo">P</span><span><b>Prakruthi</b><small>BOYS &amp; GIRLS HOSTEL</small></span></a><span>© <span id="year"></span> Prakruthi Hostel</span><span>Vasavi Nagar, Puttur</span></footer>
-<script type="module" src="/src/main.js"></script>
+
+<section class="features" id="facilities">
+  <div class="feature">
+    <h3>🛏️ Room Options</h3>
+    <p>Ask about 4-sharing and 6-sharing vacancies and bed availability.</p>
+  </div>
+  <div class="feature" id="food">
+    <h3>🍽️ Food Enquiry</h3>
+    <p>Ask management about vegetarian and non-vegetarian meals, menu and timings.</p>
+  </div>
+  <div class="feature">
+    <h3>📍 Convenient Location</h3>
+    <p>Vasavi Nagar, near Honda showroom, Puttur, Andhra Pradesh.</p>
+  </div>
+</section>
+
+<section class="booking" id="booking">
+  <div>
+    <h2>Interested in staying with us?</h2>
+    <p>Send your enquiry directly through WhatsApp. Ask about room rent, vacancies, food, facilities and joining dates.</p>
+    <p><strong>WhatsApp:</strong> +91 91214 97402</p>
+    <p><strong>Location:</strong> Vasavi Nagar, Puttur</p>
+    <a class="button button-green" href="https://maps.app.goo.gl/5fyKAVXkKjAM9hAV9" target="_blank" rel="noopener">Get Directions ↗</a>
+  </div>
+
+  <form id="bookingForm">
+    <h3>Room Enquiry</h3>
+    <label for="name">Your name</label>
+    <input id="name" required placeholder="Enter your name">
+
+    <label for="phone">Your phone number</label>
+    <input id="phone" type="tel" required placeholder="Enter your number">
+
+    <label for="room">Room preference</label>
+    <select id="room" required>
+      <option value="4-sharing">4-sharing room</option>
+      <option value="6-sharing">6-sharing room</option>
+      <option value="Either option">Either option</option>
+    </select>
+
+    <label for="date">Expected joining date</label>
+    <input id="date" type="date">
+
+    <label for="message">Questions</label>
+    <textarea id="message" rows="3" placeholder="Ask about rent, food or availability"></textarea>
+
+    <button class="button button-green" type="submit">Send Enquiry on WhatsApp ↗</button>
+  </form>
+</section>
+
+<section class="location" id="location">
+  <h2>Find Prakruthi Hostel</h2>
+  <p>Vasavi Nagar, near Honda showroom<br>Puttur, Andhra Pradesh</p>
+  <a class="button" href="https://maps.app.goo.gl/5fyKAVXkKjAM9hAV9" target="_blank" rel="noopener">Open Google Maps</a>
+</section>
+</main>
+
+<footer>
+  <p>© <span id="year"></span> Prakruthi Hostel. All rights reserved.</p>
+  <p>Room rent and availability must be confirmed directly with management.</p>
+</footer>
+
+<a class="whatsapp" href="https://wa.me/919121497402" target="_blank" rel="noopener">☏ WhatsApp</a>
+
+<script>
+const WHATSAPP_NUMBER = "919121497402";
+
+function chooseRoom(roomType) {
+  document.getElementById("room").value = roomType;
+  document.getElementById("booking").scrollIntoView({behavior: "smooth"});
+}
+
+document.getElementById("bookingForm").addEventListener("submit", function(event) {
+  event.preventDefault();
+
+  const name = document.getElementById("name").value.trim();
+  const phone = document.getElementById("phone").value.trim();
+  const room = document.getElementById("room").value;
+  const date = document.getElementById("date").value || "Not specified";
+  const message = document.getElementById("message").value.trim() || "Please share rent and availability.";
+
+  const text =
+    "Hello Prakruthi Hostel! I want to enquire about a room.\n" +
+    "Name: " + name + "\n" +
+    "My phone: " + phone + "\n" +
+    "Room: " + room + "\n" +
+    "Joining date: " + date + "\n" +
+    "Questions: " + message;
+
+  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
+  window.open(url, "_blank");
+});
+
+document.getElementById("year").textContent = new Date().getFullYear();
+</script>
 </body>
 </html>
