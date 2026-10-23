@@ -1,659 +1,188 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="theme-color" content="#174b38">
-
-  <title>Hostel accommodation | Contact for availability</title>
-  <meta id="metaDescription" name="description" content="Explore hostel room options and contact us for rent and availability.">
-
-  <style>
-    :root {
-      --green: #174b38;
-      --dark-green: #102c20;
-      --cream: #f7f5ed;
-      --gold: #c7a56a;
-      --text: #23342a;
-      --muted: #66746a;
-      --white: #ffffff;
-    }
-
-    * {
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      scroll-padding-top: 90px;
-    }
-
-    body {
-      margin: 0;
-      font-family: Arial, Helvetica, sans-serif;
-      background: var(--cream);
-      color: var(--text);
-      line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-    }
-
-    button,
-    input,
-    select,
-    textarea {
-      font: inherit;
-    }
-
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 10;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-      padding: 16px 7%;
-      background: var(--white);
-      box-shadow: 0 2px 12px #00000010;
-    }
-
-    .logo {
-      color: var(--green);
-      font-size: 21px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    nav a {
-      color: var(--green);
-      font-size: 14px;
-      text-decoration: none;
-      font-weight: 600;
-    }
-
-    nav a:hover {
-      color: #9a7132;
-    }
-
-    .hero {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      align-items: center;
-      gap: 35px;
-      padding: 75px 7%;
-      color: var(--white);
-      background: linear-gradient(120deg, #123a2b, #286348);
-    }
-
-    .eyebrow {
-      color: #e4c58d;
-      font-weight: bold;
-      letter-spacing: 2px;
-      font-size: 13px;
-    }
-
-    .hero h1 {
-      margin: 12px 0;
-      font-size: clamp(36px, 5vw, 58px);
-      line-height: 1.12;
-    }
-
-    .hero h1 span {
-      color: #e4c58d;
-    }
-
-    .hero p {
-      color: #e0e9e2;
-      line-height: 1.8;
-    }
-
-    .hero-image {
-      min-height: 320px;
-      border-radius: 12px;
-      background:
-        url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1000&q=85")
-        center / cover no-repeat;
-    }
-
-    .button {
-      display: inline-block;
-      padding: 12px 20px;
-      border: 0;
-      border-radius: 5px;
-      background: var(--gold);
-      color: #172f23;
-      text-decoration: none;
-      font-weight: bold;
-      cursor: pointer;
-      text-align: center;
-      transition: opacity 0.2s, transform 0.2s;
-    }
-
-    .button:hover {
-      opacity: 0.9;
-      transform: translateY(-1px);
-    }
-
-    .button-green {
-      background: var(--green);
-      color: var(--white);
-    }
-
-    section {
-      padding: 65px 7%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .section-title h2 {
-      margin-bottom: 10px;
-      color: var(--green);
-      font-size: 34px;
-    }
-
-    .section-title p {
-      color: var(--muted);
-    }
-
-    .rooms {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 25px;
-    }
-
-    .card {
-      overflow: hidden;
-      border-radius: 10px;
-      background: var(--white);
-      box-shadow: 0 8px 28px #183e2a12;
-    }
-
-    .card img {
-      display: block;
-      width: 100%;
-      height: 250px;
-      object-fit: cover;
-    }
-
-    .card-content {
-      padding: 24px;
-    }
-
-    .card h3 {
-      margin: 0 0 10px;
-      color: var(--green);
-      font-size: 25px;
-    }
-
-    .price {
-      margin: 15px 0 8px;
-      color: #9a7132;
-      font-size: 20px;
-      font-weight: bold;
-    }
-
-    .rent-options {
-      color: #58685d;
-      font-size: 14px;
-    }
-
-    .card ul {
-      padding-left: 20px;
-      color: #58685d;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .card .button {
-      width: 100%;
-    }
-
-    .note {
-      margin-top: 20px;
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .features {
-      display: grid;
-      grid-template-columns: repeat(4, minmax(0, 1fr));
-      gap: 20px;
-      background: #e7ecdf;
-    }
-
-    .features > .section-title {
-      grid-column: 1 / -1;
-      margin-bottom: 0;
-    }
-
-    .feature {
-      overflow: hidden;
-      border-radius: 8px;
-      background: var(--white);
-      box-shadow: 0 8px 28px #183e2a12;
-    }
-
-    .feature img {
-      display: block;
-      width: 100%;
-      height: 155px;
-      object-fit: cover;
-    }
-
-    .feature-content {
-      padding: 18px;
-    }
-
-    .feature h3 {
-      margin: 0 0 8px;
-      color: var(--green);
-      font-size: 19px;
-    }
-
-    .feature p {
-      margin: 0;
-      color: var(--muted);
-      font-size: 14px;
-    }
-
-    .booking {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      align-items: start;
-      gap: 40px;
-    }
-
-    .booking h2 {
-      color: var(--green);
-      font-size: 35px;
-      line-height: 1.2;
-    }
-
-    form {
-      padding: 25px;
-      border-radius: 10px;
-      background: var(--white);
-      box-shadow: 0 8px 28px #183e2a12;
-    }
-
-    form h3 {
-      margin-top: 0;
-      color: var(--green);
-    }
-
-    label {
-      display: block;
-      margin: 13px 0 6px;
-      font-size: 14px;
-      font-weight: bold;
-    }
-
-    input,
-    select,
-    textarea {
-      display: block;
-      width: 100%;
-      padding: 12px;
-      border: 1px solid #d9ded6;
-      border-radius: 5px;
-      background: #fff;
-      color: var(--text);
-    }
-
-    input:focus,
-    select:focus,
-    textarea:focus {
-      outline: 2px solid #8bb29a;
-      outline-offset: 1px;
-    }
-
-    textarea {
-      resize: vertical;
-    }
-
-    form button {
-      width: 100%;
-      margin-top: 18px;
-    }
-
-    .location {
-      text-align: center;
-      color: var(--white);
-      background: var(--green);
-    }
-
-    .location h2 {
-      font-size: 34px;
-    }
-
-    .location p {
-      line-height: 1.9;
-    }
-
-    footer {
-      padding: 25px 7%;
-      text-align: center;
-      color: #dce7df;
-      background: var(--dark-green);
-      font-size: 13px;
-    }
-
-    .whatsapp {
-      position: fixed;
-      right: 18px;
-      bottom: 18px;
-      z-index: 20;
-      padding: 13px 18px;
-      border-radius: 30px;
-      color: var(--white);
-      background: #16874a;
-      text-decoration: none;
-      font-weight: bold;
-      box-shadow: 0 5px 18px #0003;
-    }
-
-    @media (max-width: 800px) {
-      header {
-        flex-wrap: wrap;
-      }
-
-      nav {
-        width: 100%;
-        gap: 12px;
-      }
-
-      .hero,
-      .booking {
-        grid-template-columns: 1fr;
-      }
-
-      .hero {
-        padding: 48px 6%;
-      }
-
-      .hero-image {
-        min-height: 240px;
-      }
-
-      section {
-        padding: 48px 6%;
-      }
-
-      .rooms {
-        grid-template-columns: 1fr;
-      }
-
-      .features {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 420px) {
-      .logo {
-        font-size: 19px;
-      }
-
-      nav {
-        gap: 10px;
-      }
-
-      nav a {
-        font-size: 12px;
-      }
-
-      .section-title h2,
-      .location h2 {
-        font-size: 28px;
-      }
-
-      .booking h2 {
-        font-size: 30px;
-      }
-
-      .card-content,
-      form {
-        padding: 18px;
-      }
-
-      .features {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#173f35">
+<title>Prakruthi Hostel | Owner Dashboard</title>
+<style>
+:root{--green:#173f35;--green2:#246653;--cream:#f7f5ef;--sand:#e8dcc8;--ink:#202923;--muted:#68756e;--white:#fff;--red:#b73c36;--amber:#9a6715;--line:#e4e8e2;--shadow:0 12px 32px #173f3510}
+*{box-sizing:border-box}body{margin:0;background:var(--cream);color:var(--ink);font:15px/1.5 system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}button,input,select,textarea{font:inherit}button{cursor:pointer}.app{min-height:100vh}.topbar{background:var(--green);color:white;padding:17px clamp(16px,4vw,42px);display:flex;align-items:center;justify-content:space-between;gap:14px;flex-wrap:wrap}.brand{display:flex;gap:12px;align-items:center}.logo{width:43px;height:43px;border-radius:14px;background:#f0e7d7;color:var(--green);display:grid;place-items:center;font-size:23px;font-weight:800}.brand h1{font-size:18px;line-height:1.2;margin:0}.brand p{margin:4px 0 0;color:#d5e4dc;font-size:12px}.top-actions{display:flex;gap:9px;flex-wrap:wrap}.btn{border:0;border-radius:10px;padding:10px 14px;font-weight:700;background:var(--green2);color:white}.btn.light{background:#fff;color:var(--green)}.btn.outline{background:transparent;border:1px solid #cbd8d0;color:inherit}.btn.danger{background:var(--red)}.btn.small{padding:6px 9px;font-size:12px}.container{max-width:1250px;margin:auto;padding:26px clamp(14px,3vw,32px) 48px}.notice{background:#fff4d9;border:1px solid #eed9a7;border-radius:12px;padding:12px 15px;color:#614816;font-size:13px;margin-bottom:20px}.welcome{display:flex;align-items:flex-end;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:20px}.welcome h2{margin:0;font-size:clamp(24px,4vw,32px);letter-spacing:-.6px}.welcome p{margin:6px 0 0;color:var(--muted)}.date-label{font-size:13px;color:var(--muted)}.stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;margin:20px 0 24px}.stat{background:white;border:1px solid var(--line);box-shadow:var(--shadow);padding:18px;border-radius:16px;min-width:0}.stat .label{font-size:12px;color:var(--muted);font-weight:700}.stat .num{font-size:clamp(23px,3vw,31px);font-weight:800;letter-spacing:-.7px;margin:7px 0 3px}.stat .sub{font-size:12px;color:var(--muted)}.tabs{display:flex;gap:7px;overflow-x:auto;padding:5px 0 13px;margin-bottom:12px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;border-radius:10px;padding:10px 14px;color:var(--muted);font-weight:700}.tab.active{background:var(--green);color:white;border-color:var(--green)}.panel{display:none}.panel.active{display:block}.section-head{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin:12px 0 15px}.section-head h3{font-size:19px;margin:0}.section-head p{font-size:13px;color:var(--muted);margin:4px 0 0}.card{background:white;border:1px solid var(--line);border-radius:16px;padding:18px;box-shadow:var(--shadow);margin-bottom:16px}.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}.field{display:flex;flex-direction:column;gap:6px;margin-bottom:12px}.field label{font-size:12px;font-weight:750;color:#46554c}.field input,.field select,.field textarea,.search{width:100%;padding:11px 12px;border:1px solid #d9e0d9;border-radius:9px;background:#fff;color:var(--ink);outline:none}.field input:focus,.field select:focus,.field textarea:focus,.search:focus{border-color:var(--green2);box-shadow:0 0 0 3px #24665318}.form-row{display:grid;grid-template-columns:1fr 1fr;gap:12px}.actions{display:flex;gap:8px;flex-wrap:wrap}.table-wrap{overflow-x:auto;border:1px solid var(--line);border-radius:12px}table{width:100%;border-collapse:collapse;min-width:680px;background:white}th,td{text-align:left;padding:12px 13px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}th{background:#f7f8f5;color:#65736a;font-size:11px;text-transform:uppercase;letter-spacing:.05em}tr:last-child td{border-bottom:0}.pill{display:inline-block;border-radius:999px;padding:4px 8px;font-size:11px;font-weight:800;background:#e9f4ec;color:#276344}.pill.pending{background:#fff2d8;color:#8a5a0b}.pill.full{background:#fde9e7;color:#a32e2b}.room-card{background:#fff;border:1px solid var(--line);border-radius:14px;padding:16px}.room-top{display:flex;justify-content:space-between;align-items:center;gap:8px}.room-card h4{margin:0;font-size:16px}.room-number{font-size:27px;font-weight:800;margin:12px 0 2px}.muted{color:var(--muted);font-size:13px}.progress{height:7px;background:#e8ece7;border-radius:99px;overflow:hidden;margin:12px 0}.progress span{height:100%;display:block;background:var(--green2);border-radius:99px}.empty{padding:30px;text-align:center;color:var(--muted)}.inline-note{font-size:12px;color:var(--muted);margin-top:10px}.footer{text-align:center;color:var(--muted);font-size:12px;margin-top:26px}.modal-backdrop{position:fixed;inset:0;background:#10251f8c;display:none;align-items:center;justify-content:center;padding:18px;z-index:10}.modal-backdrop.open{display:flex}.modal{background:white;border-radius:18px;padding:22px;width:min(560px,100%);max-height:90vh;overflow:auto}.modal h3{margin:0 0 16px}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#172e25;color:white;border-radius:12px;padding:11px 16px;box-shadow:var(--shadow);display:none;z-index:20;max-width:90vw}.toast.show{display:block}.hide{display:none!important}
+@media(max-width:800px){.stats{grid-template-columns:repeat(2,minmax(0,1fr))}.grid3{grid-template-columns:repeat(2,minmax(0,1fr))}.grid2{grid-template-columns:1fr}}
+@media(max-width:480px){.topbar{padding:14px}.top-actions{width:100%}.top-actions .btn{flex:1}.container{padding-top:18px}.stats{gap:9px}.stat{padding:13px}.grid3{grid-template-columns:1fr}.form-row{grid-template-columns:1fr}.card{padding:14px}}
+</style>
 </head>
-
 <body>
-
-  <header>
-    <div class="logo">🌿 <span id="businessName">Hostel name</span></div>
-
-    <nav aria-label="Main navigation">
-      <a href="#home">Home</a>
-      <a href="#rooms">Rooms</a>
-      <a href="#facilities">Facilities</a>
-      <a href="#booking">Enquiry</a>
-      <a href="#location">Location</a>
-    </nav>
-  </header>
-
-  <main>
-    <section class="hero" id="home">
-      <div>
-        <p class="eyebrow" id="welcomeText">WELCOME</p>
-
-        <h1 id="tagline">Your comfort. Your space. Your stay.</h1>
-
-        <p id="heroDescription">Explore our room options. Contact us to check rent, vacancies and available facilities.</p>
-
-        <a class="button" href="#rooms">Explore Rooms ↓</a>
-      </div>
-
-      <div class="hero-image" role="img" aria-label="Example shared accommodation room"></div>
-    </section>
-
-    <section id="rooms">
-      <div class="section-title">
-        <h2>Choose Your Room</h2>
-        <p>
-          Compare the available room options and contact us
-          to confirm current rent and availability.
-        </p>
-      </div>
-
-      <div class="rooms" id="roomCards"></div>
-
-      <p class="note">
-        Note: The room pictures are illustrative examples.
-        Replace them with actual hostel photos before publishing.
-        Confirm all rent amounts with management.
-      </p>
-    </section>
-
-    <section class="features" id="facilities">
-      <div class="section-title">
-        <h2>Hostel Facilities</h2>
-        <p>Illustrative artwork; confirm available facilities with management.</p>
-      </div>
-
-      <div class="feature">
-        <img src="./assets/facilities-comfort.svg" alt="Illustration of Wi-Fi, hot water and television" loading="lazy">
-        <div class="feature-content">
-          <h3>Everyday Comfort</h3>
-          <p>Free Wi-Fi, hot water and TV.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <img src="./assets/facilities-services.svg" alt="Illustration of laundry and housekeeping services" loading="lazy">
-        <div class="feature-content">
-          <h3>Helpful Services</h3>
-          <p>Laundry service and housekeeping.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <img src="./assets/facilities-utilities.svg" alt="Illustration of power backup and RO drinking water" loading="lazy">
-        <div class="feature-content">
-          <h3>Daily Essentials</h3>
-          <p>Power backup and RO drinking water.</p>
-        </div>
-      </div>
-
-      <div class="feature">
-        <img src="./assets/facilities-security-parking.svg" alt="Illustration of a secure hostel and parking space" loading="lazy">
-        <div class="feature-content">
-          <h3>Security &amp; Parking</h3>
-          <p>Security arrangements and parking space.</p>
-        </div>
-      </div>
-
-      <div class="feature feature-location">
-        <div class="feature-content">
-          <h3>📍 Convenient Location</h3>
-          <p><span id="featureAddress">Contact us for location details.</span></p>
-        </div>
-      </div>
-    </section>
-
-    <section class="booking" id="booking">
-      <div>
-        <h2>Interested in staying with us?</h2>
-
-        <p>
-          Send your enquiry through WhatsApp. Ask about
-          room rent, vacancies, food, facilities and
-          your expected joining date.
-        </p>
-
-        <p>
-          <strong>WhatsApp:</strong>
-          <a id="phoneLink" href="#booking">
-            <span id="phoneDisplay">Contact us</span>
-          </a>
-        </p>
-
-        <p>
-          <strong>Location:</strong> <span id="shortAddress">Contact us for location details.</span>
-        </p>
-
-        <a
-          class="button button-green"
-          id="bookingMapLink"
-          href="#location"
-          target="_blank"
-          rel="noopener noreferrer">
-          Get Directions ↗
-        </a>
-      </div>
-
-      <form id="bookingForm">
-        <h3>Room Enquiry</h3>
-
-        <label for="name">Your name</label>
-        <input
-          id="name"
-          name="name"
-          type="text"
-          autocomplete="name"
-          maxlength="80"
-          required
-          placeholder="Enter your name">
-
-        <label for="phone">Your phone number</label>
-        <input
-          id="phone"
-          name="phone"
-          type="tel"
-          inputmode="tel"
-          autocomplete="tel"
-          pattern="[+0-9() -]{7,20}"
-          title="Enter a valid phone number"
-          required
-          placeholder="Enter your number">
-
-        <label for="room">Room preference</label>
-        <select id="room" name="room" required>
-          <option value="" disabled selected>
-            Select a room type
-          </option>
-          <option value="Either option">Either option</option>
-        </select>
-
-        <label for="date">Expected joining date</label>
-        <input
-          id="date"
-          name="date"
-          type="date">
-
-        <label for="message">Questions</label>
-        <textarea
-          id="message"
-          name="message"
-          rows="3"
-          maxlength="1000"
-          placeholder="Ask about rent, food or availability"></textarea>
-
-        <button
-          id="submitButton"
-          class="button button-green"
-          type="submit">
-          Send Enquiry on WhatsApp ↗
-        </button>
-        <p id="formStatus" aria-live="polite"></p>
-      </form>
-    </section>
-
-    <section class="location" id="location">
-      <h2>Find <span id="locationBusinessName">the hostel</span></h2>
-
-      <p id="fullAddress">Contact us for location details.</p>
-
-      <a
-        class="button"
-        id="locationMapLink"
-        href="#location"
-        target="_blank"
-        rel="noopener noreferrer">
-        Open Google Maps
-      </a>
-    </section>
-  </main>
-
-  <footer>
-    <p>
-      © <span id="year"></span>
-      <span id="footerBusinessName">Hostel name</span>. All rights reserved.
-    </p>
-
-    <p>
-      Availability and payment terms should be confirmed
-      directly with management.
-    </p>
-  </footer>
-
-  <a
-    class="whatsapp"
-    id="whatsappLink"
-    href="#booking"
-    target="_blank"
-    rel="noopener noreferrer"
-    aria-label="Contact the hostel on WhatsApp">
-    ☎ WhatsApp
-  </a>
-
-  <script type="module" src="./main.js"></script>
-
+<div class="app">
+<header class="topbar">
+  <div class="brand"><div class="logo">P</div><div><h1>Prakruthi Hostel</h1><p>Owner dashboard · Vasavi Nagar, Puttur</p></div></div>
+  <div class="top-actions"><button class="btn light" id="whatsappTop">WhatsApp enquiries ↗</button><button class="btn outline" id="exportBtn" style="color:white;border-color:#719087">Export CSV</button></div>
+</header>
+<main class="container">
+  <div class="notice"><strong>Prototype / demo mode:</strong> this version stores data only in this browser on this device. It has no secure owner login or cloud sync. Use sample data only—do not enter real student personal details, IDs, or payment credentials. Connect a secure backend before using it with the hostel owner.</div>
+  <div class="welcome"><div><h2>Good evening 👋</h2><p>Here’s your hostel at a glance.</p></div><div class="date-label" id="today"></div></div>
+  <section class="stats">
+    <div class="stat"><div class="label">TOTAL STUDENTS</div><div class="num" id="statStudents">0</div><div class="sub">Active student records</div></div>
+    <div class="stat"><div class="label">ROOM OCCUPANCY</div><div class="num" id="statOccupancy">0%</div><div class="sub" id="statBeds">0 of 0 beds occupied</div></div>
+    <div class="stat"><div class="label">RENT COLLECTED</div><div class="num" id="statCollected">₹0</div><div class="sub" id="statDue">₹0 outstanding</div></div>
+    <div class="stat"><div class="label">PENDING BOOKINGS</div><div class="num" id="statBookings">0</div><div class="sub">Awaiting confirmation</div></div>
+  </section>
+  <nav class="tabs" aria-label="Dashboard sections">
+    <button class="tab active" data-tab="overview">Overview</button><button class="tab" data-tab="bookings">Bookings</button><button class="tab" data-tab="rooms">Room availability</button><button class="tab" data-tab="rent">Rent & payments</button><button class="tab" data-tab="students">Student records</button>
+  </nav>
+  <section class="panel active" id="overview">
+    <div class="section-head"><div><h3>Hostel overview</h3><p>Quick actions and recent activity.</p></div><button class="btn" data-open="booking">+ Add booking</button></div>
+    <div class="grid2">
+      <div class="card"><div class="section-head"><div><h3>Room availability</h3><p>Occupancy at a glance</p></div><button class="btn outline small" data-go="rooms">View rooms</button></div><div id="overviewRooms"></div></div>
+      <div class="card"><div class="section-head"><div><h3>Recent bookings</h3><p>Latest enquiries and requests</p></div><button class="btn outline small" data-go="bookings">View all</button></div><div id="recentBookings"></div></div>
+    </div>
+    <div class="card"><div class="section-head"><div><h3>Rent summary</h3><p>Current records in this browser</p></div><button class="btn outline small" data-go="rent">Manage rent</button></div><div id="rentSummary"></div></div>
+  </section>
+  <section class="panel" id="bookings">
+    <div class="section-head"><div><h3>Bookings & enquiries</h3><p>Add a booking request, then mark it confirmed when agreed.</p></div><button class="btn" data-open="booking">+ Add booking</button></div>
+    <input class="search" id="bookingSearch" placeholder="Search name, phone or room…" aria-label="Search bookings">
+    <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>Name / phone</th><th>Room type</th><th>Move-in</th><th>Status</th><th>Actions</th></tr></thead><tbody id="bookingRows"></tbody></table></div>
+    <p class="inline-note">WhatsApp opens a message draft; you must review and send it yourself.</p>
+  </section>
+  <section class="panel" id="rooms">
+    <div class="section-head"><div><h3>Room availability</h3><p>Adjust room counts to match the property.</p></div><button class="btn" data-open="room">+ Add room type</button></div>
+    <div class="grid3" id="roomCards"></div>
+  </section>
+  <section class="panel" id="rent">
+    <div class="section-head"><div><h3>Rent & payment tracking</h3><p>Track amounts marked as paid or due. No payments are processed here.</p></div><button class="btn" data-open="payment">+ Record payment</button></div>
+    <div class="grid2"><div class="card"><div class="muted">Total marked paid</div><div class="room-number" id="rentPaidTotal">₹0</div></div><div class="card"><div class="muted">Total marked due</div><div class="room-number" id="rentDueTotal">₹0</div></div></div>
+    <div class="table-wrap"><table><thead><tr><th>Student / reference</th><th>Month</th><th>Amount</th><th>Status</th><th>Action</th></tr></thead><tbody id="paymentRows"></tbody></table></div>
+  </section>
+  <section class="panel" id="students">
+    <div class="section-head"><div><h3>Student records</h3><p>Demo records only. Keep real student data in a secure system.</p></div><button class="btn" data-open="student">+ Add student</button></div>
+    <input class="search" id="studentSearch" placeholder="Search name, phone or room…" aria-label="Search students">
+    <div class="table-wrap" style="margin-top:12px"><table><thead><tr><th>Student</th><th>Phone</th><th>Room</th><th>Monthly rent</th><th>Actions</th></tr></thead><tbody id="studentRows"></tbody></table></div>
+  </section>
+  <div class="footer">Prakruthi Boys & Girls Hostel · Dashboard prototype · Built for mobile and desktop</div>
+</main>
+</div>
+<div class="modal-backdrop" id="modalBackdrop"><div class="modal"><div style="display:flex;justify-content:space-between;align-items:center;gap:10px"><h3 id="modalTitle">Add record</h3><button class="btn outline small" id="closeModal" aria-label="Close">✕</button></div><form id="recordForm"></form></div></div>
+<div class="toast" id="toast"></div>
+<script>
+(() => {
+'use strict';
+const STORE='prakruthiDashboardDemo_v1';
+const DEFAULT_PHONE='91XXXXXXXXXX'; // Replace with the owner's WhatsApp number including country code, digits only.
+const money=n=>'₹'+Number(n||0).toLocaleString('en-IN',{maximumFractionDigits:0});
+const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const todayISO=()=>new Date().toISOString().slice(0,10);
+let data;
+try { data=JSON.parse(localStorage.getItem(STORE)) || null; } catch(e) { data=null; }
+if(!data) data={rooms:[{id:1,name:'Sharing room',total:12,occupied:7,rent:5000},{id:2,name:'Two-sharing',total:8,occupied:4,rent:6000},{id:3,name:'Single room',total:3,occupied:1,rent:8500}],bookings:[],students:[],payments:[],nextId:4};
+const save=()=>{try{localStorage.setItem(STORE,JSON.stringify(data));}catch(e){toast('Browser storage unavailable. Export your demo data.')}};
+const el=id=>document.getElementById(id);
+const sum=a=>a.reduce((n,x)=>n+Number(x||0),0);
+const roomBy=id=>data.rooms.find(r=>r.id===Number(id));
+const studentBy=id=>data.students.find(s=>s.id===Number(id));
+const toast=msg=>{el('toast').textContent=msg;el('toast').classList.add('show');setTimeout(()=>el('toast').classList.remove('show'),2600)};
+const pill=(status)=>`<span class="pill ${status==='Pending'||status==='Due'?'pending':status==='Cancelled'?'full':''}">${esc(status)}</span>`;
+function refresh(){
+ const occupied=sum(data.rooms.map(r=>Math.min(r.occupied,r.total))), beds=sum(data.rooms.map(r=>r.total));
+ const paid=sum(data.payments.filter(p=>p.status==='Paid').map(p=>p.amount)), due=sum(data.payments.filter(p=>p.status!=='Paid').map(p=>p.amount));
+ el('statStudents').textContent=data.students.length;
+ el('statOccupancy').textContent=(beds?Math.round(occupied/beds*100):0)+'%';
+ el('statBeds').textContent=`${occupied} of ${beds} beds occupied`;
+ el('statCollected').textContent=money(paid);el('statDue').textContent=money(due)+' outstanding';
+ el('statBookings').textContent=data.bookings.filter(b=>b.status==='Pending').length;
+ el('roomCards').innerHTML=data.rooms.map(r=>{const pct=r.total?Math.min(100,Math.round(r.occupied/r.total*100)):0;return `<div class="room-card"><div class="room-top"><h4>${esc(r.name)}</h4>${r.occupied>=r.total?pill('Full'):pill('Available')}</div><div class="room-number">${Math.max(0,r.total-r.occupied)} <span class="muted">beds available</span></div><div class="muted">${r.occupied} occupied of ${r.total} beds</div><div class="progress"><span style="width:${pct}%"></span></div><div class="muted">Monthly rent: ${money(r.rent)} per bed</div><div class="actions" style="margin-top:12px"><button class="btn outline small" data-edit-room="${r.id}">Edit counts</button></div></div>`}).join('')||'<div class="empty">No room types yet. Add your first room type.</div>';
+ el('overviewRooms').innerHTML=data.rooms.slice(0,4).map(r=>`<div style="margin:12px 0"><div style="display:flex;justify-content:space-between;gap:8px"><strong>${esc(r.name)}</strong><span class="muted">${Math.max(0,r.total-r.occupied)} available</span></div><div class="progress"><span style="width:${r.total?Math.min(100,r.occupied/r.total*100):0}%"></span></div></div>`).join('')||'<div class="empty">No room types added.</div>';
+ const recent=[...data.bookings].sort((a,b)=>b.id-a.id).slice(0,4);
+ el('recentBookings').innerHTML=recent.map(b=>`<div style="padding:10px 0;border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:10px"><div><strong>${esc(b.name)}</strong><div class="muted">${esc(b.roomName)} · ${esc(b.moveIn||'Date not set')}</div></div>${pill(b.status)}</div>`).join('')||'<div class="empty">No bookings yet. Add an enquiry to get started.</div>';
+ el('rentSummary').innerHTML=`<div class="grid3"><div><div class="muted">Paid</div><h3>${money(paid)}</h3></div><div><div class="muted">Due / pending</div><h3>${money(due)}</h3></div><div><div class="muted">Payment records</div><h3>${data.payments.length}</h3></div></div>`;
+ renderBookings();renderStudents();renderPayments();
+ el('rentPaidTotal').textContent=money(paid);el('rentDueTotal').textContent=money(due);
+}
+function renderBookings(){
+ const q=(el('bookingSearch')?.value||'').toLowerCase();
+ const list=data.bookings.filter(b=>[b.name,b.phone,b.roomName].join(' ').toLowerCase().includes(q));
+ el('bookingRows').innerHTML=list.map(b=>`<tr><td><strong>${esc(b.name)}</strong><br><span class="muted">${esc(b.phone)}</span></td><td>${esc(b.roomName)}</td><td>${esc(b.moveIn||'—')}</td><td>${pill(b.status)}</td><td><div class="actions"><button class="btn small" data-book-status="${b.id}">${b.status==='Pending'?'Confirm':'Set pending'}</button><button class="btn outline small" data-wa-book="${b.id}">WhatsApp</button><button class="btn danger small" data-delete-book="${b.id}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No bookings found.</td></tr>';
+}
+function renderStudents(){
+ const q=(el('studentSearch')?.value||'').toLowerCase();
+ const list=data.students.filter(s=>[s.name,s.phone,s.roomName].join(' ').toLowerCase().includes(q));
+ el('studentRows').innerHTML=list.map(s=>`<tr><td><strong>${esc(s.name)}</strong></td><td>${esc(s.phone)}</td><td>${esc(s.roomName||'—')}</td><td>${money(s.rent)}</td><td><div class="actions"><button class="btn outline small" data-edit-student="${s.id}">Edit</button><button class="btn danger small" data-delete-student="${s.id}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No student records found.</td></tr>';
+}
+function renderPayments(){
+ el('paymentRows').innerHTML=[...data.payments].sort((a,b)=>b.id-a.id).map(p=>`<tr><td>${esc(p.studentName||'General rent')}</td><td>${esc(p.month)}</td><td>${money(p.amount)}</td><td>${pill(p.status)}</td><td><div class="actions"><button class="btn small" data-payment-status="${p.id}">${p.status==='Paid'?'Mark due':'Mark paid'}</button><button class="btn danger small" data-delete-payment="${p.id}">Delete</button></div></td></tr>`).join('')||'<tr><td colspan="5" class="empty">No payment records yet.</td></tr>';
+}
+function openModal(type,record=null){
+ const form=el('recordForm');form.dataset.type=type;form.dataset.edit=record?.id||'';
+ const roomOptions=data.rooms.map(r=>`<option value="${r.id}" ${record?.roomId===r.id?'selected':''}>${esc(r.name)}</option>`).join('');
+ const studentOptions=data.students.map(s=>`<option value="${s.id}" ${record?.studentId===s.id?'selected':''}>${esc(s.name)}</option>`).join('');
+ const field=(label,name,value='',kind='text',required=true,extra='')=>`<div class="field"><label for="${name}">${label}</label><input id="${name}" name="${name}" type="${kind}" value="${esc(value)}" ${required?'required':''} ${extra}></div>`;
+ const select=(label,name,options,required=true)=>`<div class="field"><label for="${name}">${label}</label><select id="${name}" name="${name}" ${required?'required':''}>${options}</select></div>`;
+ let title='',body='';
+ if(type==='booking'){title=record?'Edit booking':'Add booking enquiry';body=field('Full name','name',record?.name||'')+field('Phone number','phone',record?.phone||'','tel')+select('Room type','roomId',data.rooms.map(r=>`<option value="${r.id}" ${record?.roomId===r.id?'selected':''}>${esc(r.name)} — ${money(r.rent)}/month</option>`).join(''))+field('Expected move-in date','moveIn',record?.moveIn||todayISO(),'date',false)+select('Status','status',['Pending','Confirmed','Cancelled'].map(x=>`<option ${record?.status===x?'selected':x===(record?.status||'Pending')?'selected':''}>${x}</option>`).join(''))}
+ if(type==='student'){title=record?'Edit student':'Add student record';body=field('Student name','name',record?.name||'')+field('Phone number','phone',record?.phone||'','tel')+select('Room type','roomId',data.rooms.map(r=>`<option value="${r.id}" ${record?.roomId===r.id?'selected':''}>${esc(r.name)}</option>`).join(''))+field('Monthly rent (₹)','rent',record?.rent??(roomBy(data.rooms[0]?.id)?.rent||5000),'number',true,'min="0"')+field('Move-in date','moveIn',record?.moveIn||todayISO(),'date',false)}
+ if(type==='room'){title='Add room type';body=field('Room type name','name','')+field('Total beds / capacity','total','1','number',true,'min="1"')+field('Currently occupied','occupied','0','number',true,'min="0"')+field('Monthly rent per bed (₹)','rent','5000','number',true,'min="0"')}
+ if(type==='editroom'){title='Edit room counts';body=field('Room type name','name',record.name)+field('Total beds / capacity','total',record.total,'number',true,'min="1"')+field('Currently occupied','occupied',record.occupied,'number',true,'min="0"')+field('Monthly rent per bed (₹)','rent',record.rent,'number',true,'min="0"')}
+ if(type==='payment'){title='Record rent payment';body=select('Student (optional)','studentId','<option value="">General / not linked</option>'+studentOptions,false)+field('Month','month',new Date().toLocaleString('en-IN',{month:'long',year:'numeric'}))+field('Amount (₹)','amount','5000','number',true,'min="0"')+select('Payment status','status',['Due','Paid'].map(x=>`<option>${x}</option>`).join(''))}
+ el('modalTitle').textContent=title;form.innerHTML=body+`<div class="actions" style="margin-top:16px"><button class="btn" type="submit">${record?'Save changes':'Save record'}</button><button class="btn outline" type="button" id="cancelModal">Cancel</button></div>`;
+ el('modalBackdrop').classList.add('open');el('cancelModal').onclick=closeModal;
+}
+function closeModal(){el('modalBackdrop').classList.remove('open')}
+function fieldVal(fd,k){return String(fd.get(k)||'').trim()}
+el('recordForm').addEventListener('submit',e=>{
+ e.preventDefault();const f=e.currentTarget,fd=new FormData(f),type=f.dataset.type,editId=Number(f.dataset.edit);
+ if(type==='booking'){
+  const r=roomBy(fd.get('roomId'));const item={id:editId||data.nextId++,name:fieldVal(fd,'name'),phone:fieldVal(fd,'phone'),roomId:Number(fd.get('roomId')),roomName:r?.name||'Room',moveIn:fieldVal(fd,'moveIn'),status:fieldVal(fd,'status')||'Pending'};
+  if(editId)data.bookings=data.bookings.map(x=>x.id===editId?item:x);else data.bookings.push(item);
+ }
+ if(type==='student'){
+  const r=roomBy(fd.get('roomId'));const item={id:editId||data.nextId++,name:fieldVal(fd,'name'),phone:fieldVal(fd,'phone'),roomId:Number(fd.get('roomId')),roomName:r?.name||'Room',rent:Number(fd.get('rent')||0),moveIn:fieldVal(fd,'moveIn')};
+  if(editId)data.students=data.students.map(x=>x.id===editId?item:x);else data.students.push(item);
+ }
+ if(type==='room'||type==='editroom'){
+  const total=Math.max(1,Number(fd.get('total')||1)),occupied=Math.min(total,Math.max(0,Number(fd.get('occupied')||0)));
+  const item={id:editId||data.nextId++,name:fieldVal(fd,'name'),total,occupied,rent:Math.max(0,Number(fd.get('rent')||0))};
+  if(editId)data.rooms=data.rooms.map(x=>x.id===editId?item:x);else data.rooms.push(item);
+ }
+ if(type==='payment'){
+  const sid=Number(fd.get('studentId'))||null,s=studentBy(sid);
+  data.payments.push({id:data.nextId++,studentId:sid,studentName:s?.name||'General rent',month:fieldVal(fd,'month'),amount:Math.max(0,Number(fd.get('amount')||0)),status:fieldVal(fd,'status')||'Due'});
+ }
+ save();refresh();closeModal();toast('Saved in this browser demo.');
+});
+function switchTab(tab){document.querySelectorAll('.tab').forEach(b=>b.classList.toggle('active',b.dataset.tab===tab));document.querySelectorAll('.panel').forEach(p=>p.classList.toggle('active',p.id===tab));}
+document.querySelectorAll('.tab').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.tab)));
+document.querySelectorAll('[data-go]').forEach(b=>b.addEventListener('click',()=>switchTab(b.dataset.go)));
+document.querySelectorAll('[data-open]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.open)));
+el('closeModal').onclick=closeModal;
+el('modalBackdrop').addEventListener('click',e=>{if(e.target===el('modalBackdrop'))closeModal()});
+el('bookingSearch').addEventListener('input',renderBookings);el('studentSearch').addEventListener('input',renderStudents);
+document.addEventListener('click',e=>{
+ const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.bookStatus){const x=data.bookings.find(x=>x.id===Number(b.dataset.bookStatus));if(x){x.status=x.status==='Pending'?'Confirmed':'Pending';save();refresh()}}
+ if(b.dataset.deleteBook){if(confirm('Delete this booking?')){data.bookings=data.bookings.filter(x=>x.id!==Number(b.dataset.deleteBook));save();refresh()}}
+ if(b.dataset.waBook){const x=data.bookings.find(x=>x.id===Number(b.dataset.waBook));if(x)openWhatsApp(x.phone,`Hello ${x.name}, thank you for enquiring about ${x.roomName} at Prakruthi Hostel. Your requested move-in date is ${x.moveIn||'not specified'}. Please reply to confirm your requirements.`)}
+ if(b.dataset.editStudent){const x=studentBy(b.dataset.editStudent);if(x)openModal('student',x)}
+ if(b.dataset.deleteStudent){if(confirm('Delete this student record?')){data.students=data.students.filter(x=>x.id!==Number(b.dataset.deleteStudent));save();refresh()}}
+ if(b.dataset.editRoom){const x=roomBy(b.dataset.editRoom);if(x)openModal('editroom',x)}
+ if(b.dataset.paymentStatus){const x=data.payments.find(x=>x.id===Number(b.dataset.paymentStatus));if(x){x.status=x.status==='Paid'?'Due':'Paid';save();refresh()}}
+ if(b.dataset.deletePayment){if(confirm('Delete this payment record?')){data.payments=data.payments.filter(x=>x.id!==Number(b.dataset.deletePayment));save();refresh()}}
+});
+function openWhatsApp(phone,message){
+ const digits=String(phone||'').replace(/\D/g,'');const target=digits.length>=10?digits:DEFAULT_PHONE;
+ if(target.includes('X')){toast('Set the owner WhatsApp number in index.html first.');return}
+ window.open('https://wa.me/'+target+'?text='+encodeURIComponent(message),'_blank','noopener');
+}
+el('whatsappTop').onclick=()=>openWhatsApp(DEFAULT_PHONE,'Hello, I would like to enquire about room availability and rent at Prakruthi Boys & Girls Hostel, Vasavi Nagar, Puttur.');
+el('exportBtn').onclick=()=>{
+ const rows=[['type','name','phone','room','date/month','amount','status']];
+ data.bookings.forEach(x=>rows.push(['booking',x.name,x.phone,x.roomName,x.moveIn,'',x.status]));
+ data.students.forEach(x=>rows.push(['student',x.name,x.phone,x.roomName,x.moveIn,x.rent,'']));
+ data.payments.forEach(x=>rows.push(['payment',x.studentName||'', '', '', x.month,x.amount,x.status]));
+ const csv=rows.map(r=>r.map(v=>'"'+String(v??'').replace(/"/g,'""')+'"').join(',')).join('\r\n');
+ const blob=new Blob(['\ufeff'+csv],{type:'text/csv;charset=utf-8;'}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download='prakruthi-demo-export.csv';a.click();URL.revokeObjectURL(url);toast('CSV export created.');
+};
+el('today').textContent=new Date().toLocaleDateString('en-IN',{weekday:'long',day:'numeric',month:'long',year:'numeric'});
+refresh();
+})();
+</script>
 </body>
-  </html>
+</html>
