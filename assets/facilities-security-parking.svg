@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title id="title">Hostel security and parking illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#dce8df"/>
+      <stop offset="1" stop-color="#e7e4d6"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <path d="M0 281c134-30 232-6 351 6s206 3 289-19v92H0z" fill="#bdcfbb"/>
+  <path d="m80 161 121-75 121 75v115H80z" fill="#fff" opacity=".9"/>
+  <path d="m61 165 140-91 140 91-13 19-127-83-127 83z" fill="#174b38"/>
+  <rect x="111" y="184" width="51" height="54" rx="5" fill="#b9dce0"/>
+  <rect x="240" y="184" width="51" height="54" rx="5" fill="#b9dce0"/>
+  <rect x="183" y="207" width="42" height="69" rx="5" fill="#c7a56a"/>
+  <path d="M425 108 492 132v53c0 47-30 79-67 96-37-17-67-49-67-96v-53z" fill="#286348"/>
+  <path d="m398 187 19 19 38-43" fill="none" stroke="#f7f5ed" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M376 282h164l-20-45c-5-12-15-19-28-19h-68c-12 0-23 7-28 19z" fill="#c7a56a"/>
+  <path d="m410 238 12-20h73l12 20z" fill="#d9eceb"/>
+  <rect x="395" y="272" width="24" height="17" rx="7" fill="#174b38"/>
+  <rect x="496" y="272" width="24" height="17" rx="7" fill="#174b38"/>
+  <circle cx="543" cy="88" r="5" fill="#fff"/>
+  <circle cx="558" cy="102" r="4" fill="#c7a56a"/>
+</svg>

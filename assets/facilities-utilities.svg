@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img" aria-labelledby="title">
+  <title id="title">Power backup and drinking water illustration</title>
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop stop-color="#e4e7d5"/>
+      <stop offset="1" stop-color="#d7e9e7"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#bg)"/>
+  <circle cx="319" cy="184" r="128" fill="#fff" opacity=".42"/>
+  <path d="M0 290c151-32 269 9 390 9s175-23 250-36v97H0z" fill="#b9d2c5"/>
+  <rect x="95" y="115" width="194" height="142" rx="19" fill="#174b38"/>
+  <rect x="114" y="135" width="156" height="103" rx="10" fill="#286348"/>
+  <path d="m208 143-51 59h35l-9 34 52-65h-35z" fill="#e4c58d"/>
+  <circle cx="193" cy="277" r="8" fill="#fff"/>
+  <rect x="380" y="82" width="127" height="190" rx="28" fill="#fff" opacity=".9"/>
+  <rect x="394" y="101" width="99" height="147" rx="19" fill="#b9dce0"/>
+  <path d="M443 129c-20 32-29 47-29 64a29 29 0 0 0 58 0c0-17-9-32-29-64" fill="#5fa6ad"/>
+  <path d="M418 217c15 11 36 13 52 2" fill="none" stroke="#e7f4f1" stroke-width="7" stroke-linecap="round"/>
+  <path d="M418 72h51" stroke="#fff" stroke-width="12" stroke-linecap="round"/>
+  <circle cx="548" cy="103" r="8" fill="#c7a56a"/>
+  <circle cx="87" cy="75" r="6" fill="#fff"/>
+  <circle cx="554" cy="260" r="5" fill="#fff"/>
+</svg>

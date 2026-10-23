@@ -1,322 +1,797 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Prakruthi Hostel | Book Your Stay</title>
-<meta name="description" content="Explore 4-sharing and 6-sharing rooms at Prakruthi Hostel, Puttur. Contact us for rent and availability.">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#174b38">
 
-<style>
-:root {
-  --green: #174b38;
-  --cream: #f7f5ed;
-  --gold: #c7a56a;
-  --text: #23342a;
-}
-* { box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body {
-  margin: 0;
-  font-family: Arial, sans-serif;
-  background: var(--cream);
-  color: var(--text);
-}
-header {
-  background: white;
-  padding: 16px 6%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 15px;
-  position: sticky;
-  top: 0;
-  z-index: 5;
-  box-shadow: 0 2px 12px #0000000d;
-}
-.logo { color: var(--green); font-size: 21px; font-weight: bold; }
-nav { display: flex; gap: 18px; flex-wrap: wrap; }
-nav a { color: var(--green); text-decoration: none; font-size: 14px; }
-.hero {
-  background: linear-gradient(120deg, #123a2b, #286348);
-  color: white;
-  padding: 75px 7%;
-  display: grid;
-  grid-template-columns: 1.1fr .9fr;
-  gap: 35px;
-  align-items: center;
-}
-.hero h1 { font-size: clamp(36px, 5vw, 58px); line-height: 1.12; margin: 12px 0; }
-.hero h1 span { color: #e4c58d; }
-.hero p { line-height: 1.8; color: #e0e9e2; }
-.hero-image {
-  min-height: 320px;
-  background: url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1000&q=85") center/cover;
-  border-radius: 12px;
-}
-.button {
-  display: inline-block;
-  background: var(--gold);
-  color: #172f23;
-  padding: 13px 20px;
-  border: 0;
-  border-radius: 5px;
-  text-decoration: none;
-  font-weight: bold;
-  cursor: pointer;
-}
-.button-green { background: var(--green); color: white; }
-section { padding: 65px 7%; }
-.section-title { text-align: center; margin-bottom: 35px; }
-.section-title h2 { font-size: 34px; color: var(--green); margin-bottom: 10px; }
-.section-title p { color: #66746a; }
-.rooms {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 25px;
-}
-.card {
-  background: white;
-  border-radius: 10px;
-  overflow: hidden;
-  box-shadow: 0 8px 28px #183e2a12;
-}
-.card img { width: 100%; height: 250px; object-fit: cover; display: block; }
-.card-content { padding: 24px; }
-.card h3 { color: var(--green); font-size: 25px; margin: 0 0 10px; }
-.price { font-size: 20px; font-weight: bold; color: #9a7132; margin: 15px 0; }
-.card ul { padding-left: 20px; line-height: 1.9; color: #58685d; font-size: 14px; }
-.card .button { width: 100%; text-align: center; }
-.features {
-  background: #e7ecdf;
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-}
-.feature { background: white; padding: 22px; border-radius: 8px; }
-.feature h3 { color: var(--green); }
-.feature p { font-size: 14px; line-height: 1.7; color: #66746a; }
-.booking {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 40px;
-  align-items: start;
-}
-.booking h2 { font-size: 35px; color: var(--green); }
-form {
-  background: white;
-  padding: 25px;
-  border-radius: 10px;
-}
-label { display: block; font-size: 14px; font-weight: bold; margin: 13px 0 6px; }
-input, select, textarea {
-  width: 100%;
-  padding: 12px;
-  border: 1px solid #d9ded6;
-  border-radius: 5px;
-  font: inherit;
-  background: #fff;
-}
-form button { width: 100%; margin-top: 18px; }
-.location { background: var(--green); color: white; text-align: center; }
-.location h2 { font-size: 34px; }
-.location p { line-height: 1.9; }
-footer {
-  background: #102c20;
-  color: #dce7df;
-  padding: 25px 7%;
-  text-align: center;
-  font-size: 13px;
-}
-.whatsapp {
-  position: fixed;
-  bottom: 18px;
-  right: 18px;
-  z-index: 10;
-  background: #16874a;
-  color: white;
-  padding: 14px 18px;
-  border-radius: 30px;
-  text-decoration: none;
-  font-weight: bold;
-  box-shadow: 0 5px 18px #0003;
-}
-@media(max-width: 700px) {
-  header { flex-wrap: wrap; }
-  nav { width: 100%; justify-content: space-between; gap: 8px; }
-  nav a { font-size: 12px; }
-  .hero, .booking { grid-template-columns: 1fr; }
-  .hero { padding: 48px 6%; }
-  .hero-image { min-height: 230px; }
-  section { padding: 48px 6%; }
-  .rooms, .features { grid-template-columns: 1fr; }
-  .section-title h2 { font-size: 29px; }
-}
-</style>
+  <title>Hostel accommodation | Contact for availability</title>
+  <meta id="metaDescription" name="description" content="Explore hostel room options and contact us for rent and availability.">
+
+  <style>
+    :root {
+      --green: #174b38;
+      --dark-green: #102c20;
+      --cream: #f7f5ed;
+      --gold: #c7a56a;
+      --text: #23342a;
+      --muted: #66746a;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+      scroll-padding-top: 90px;
+    }
+
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: var(--cream);
+      color: var(--text);
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+    }
+
+    button,
+    input,
+    select,
+    textarea {
+      font: inherit;
+    }
+
+    header {
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      padding: 16px 7%;
+      background: var(--white);
+      box-shadow: 0 2px 12px #00000010;
+    }
+
+    .logo {
+      color: var(--green);
+      font-size: 21px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
+
+    nav {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 18px;
+    }
+
+    nav a {
+      color: var(--green);
+      font-size: 14px;
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    nav a:hover {
+      color: #9a7132;
+    }
+
+    .hero {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      align-items: center;
+      gap: 35px;
+      padding: 75px 7%;
+      color: var(--white);
+      background: linear-gradient(120deg, #123a2b, #286348);
+    }
+
+    .eyebrow {
+      color: #e4c58d;
+      font-weight: bold;
+      letter-spacing: 2px;
+      font-size: 13px;
+    }
+
+    .hero h1 {
+      margin: 12px 0;
+      font-size: clamp(36px, 5vw, 58px);
+      line-height: 1.12;
+    }
+
+    .hero h1 span {
+      color: #e4c58d;
+    }
+
+    .hero p {
+      color: #e0e9e2;
+      line-height: 1.8;
+    }
+
+    .hero-image {
+      min-height: 320px;
+      border-radius: 12px;
+      background:
+        url("https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=1000&q=85")
+        center / cover no-repeat;
+    }
+
+    .button {
+      display: inline-block;
+      padding: 12px 20px;
+      border: 0;
+      border-radius: 5px;
+      background: var(--gold);
+      color: #172f23;
+      text-decoration: none;
+      font-weight: bold;
+      cursor: pointer;
+      text-align: center;
+      transition: opacity 0.2s, transform 0.2s;
+    }
+
+    .button:hover {
+      opacity: 0.9;
+      transform: translateY(-1px);
+    }
+
+    .button-green {
+      background: var(--green);
+      color: var(--white);
+    }
+
+    section {
+      padding: 65px 7%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
+
+    .section-title h2 {
+      margin-bottom: 10px;
+      color: var(--green);
+      font-size: 34px;
+    }
+
+    .section-title p {
+      color: var(--muted);
+    }
+
+    .rooms {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 25px;
+    }
+
+    .card {
+      overflow: hidden;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: 0 8px 28px #183e2a12;
+    }
+
+    .card img {
+      display: block;
+      width: 100%;
+      height: 250px;
+      object-fit: cover;
+    }
+
+    .card-content {
+      padding: 24px;
+    }
+
+    .card h3 {
+      margin: 0 0 10px;
+      color: var(--green);
+      font-size: 25px;
+    }
+
+    .price {
+      margin: 15px 0 8px;
+      color: #9a7132;
+      font-size: 20px;
+      font-weight: bold;
+    }
+
+    .rent-options {
+      color: #58685d;
+      font-size: 14px;
+    }
+
+    .card ul {
+      padding-left: 20px;
+      color: #58685d;
+      font-size: 14px;
+      line-height: 1.9;
+    }
+
+    .card .button {
+      width: 100%;
+    }
+
+    .note {
+      margin-top: 20px;
+      color: var(--muted);
+      font-size: 12px;
+    }
+
+    .features {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 20px;
+      background: #e7ecdf;
+    }
+
+    .features > .section-title {
+      grid-column: 1 / -1;
+      margin-bottom: 0;
+    }
+
+    .feature {
+      overflow: hidden;
+      border-radius: 8px;
+      background: var(--white);
+      box-shadow: 0 8px 28px #183e2a12;
+    }
+
+    .feature img {
+      display: block;
+      width: 100%;
+      height: 155px;
+      object-fit: cover;
+    }
+
+    .feature-content {
+      padding: 18px;
+    }
+
+    .feature h3 {
+      margin: 0 0 8px;
+      color: var(--green);
+      font-size: 19px;
+    }
+
+    .feature p {
+      margin: 0;
+      color: var(--muted);
+      font-size: 14px;
+    }
+
+    .booking {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: start;
+      gap: 40px;
+    }
+
+    .booking h2 {
+      color: var(--green);
+      font-size: 35px;
+      line-height: 1.2;
+    }
+
+    form {
+      padding: 25px;
+      border-radius: 10px;
+      background: var(--white);
+      box-shadow: 0 8px 28px #183e2a12;
+    }
+
+    form h3 {
+      margin-top: 0;
+      color: var(--green);
+    }
+
+    label {
+      display: block;
+      margin: 13px 0 6px;
+      font-size: 14px;
+      font-weight: bold;
+    }
+
+    input,
+    select,
+    textarea {
+      display: block;
+      width: 100%;
+      padding: 12px;
+      border: 1px solid #d9ded6;
+      border-radius: 5px;
+      background: #fff;
+      color: var(--text);
+    }
+
+    input:focus,
+    select:focus,
+    textarea:focus {
+      outline: 2px solid #8bb29a;
+      outline-offset: 1px;
+    }
+
+    textarea {
+      resize: vertical;
+    }
+
+    form button {
+      width: 100%;
+      margin-top: 18px;
+    }
+
+    .location {
+      text-align: center;
+      color: var(--white);
+      background: var(--green);
+    }
+
+    .location h2 {
+      font-size: 34px;
+    }
+
+    .location p {
+      line-height: 1.9;
+    }
+
+    footer {
+      padding: 25px 7%;
+      text-align: center;
+      color: #dce7df;
+      background: var(--dark-green);
+      font-size: 13px;
+    }
+
+    .whatsapp {
+      position: fixed;
+      right: 18px;
+      bottom: 18px;
+      z-index: 20;
+      padding: 13px 18px;
+      border-radius: 30px;
+      color: var(--white);
+      background: #16874a;
+      text-decoration: none;
+      font-weight: bold;
+      box-shadow: 0 5px 18px #0003;
+    }
+
+    @media (max-width: 800px) {
+      header {
+        flex-wrap: wrap;
+      }
+
+      nav {
+        width: 100%;
+        gap: 12px;
+      }
+
+      .hero,
+      .booking {
+        grid-template-columns: 1fr;
+      }
+
+      .hero {
+        padding: 48px 6%;
+      }
+
+      .hero-image {
+        min-height: 240px;
+      }
+
+      section {
+        padding: 48px 6%;
+      }
+
+      .rooms {
+        grid-template-columns: 1fr;
+      }
+
+      .features {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 420px) {
+      .logo {
+        font-size: 19px;
+      }
+
+      nav {
+        gap: 10px;
+      }
+
+      nav a {
+        font-size: 12px;
+      }
+
+      .section-title h2,
+      .location h2 {
+        font-size: 28px;
+      }
+
+      .booking h2 {
+        font-size: 30px;
+      }
+
+      .card-content,
+      form {
+        padding: 18px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
 </head>
 
 <body>
-<header>
-  <div class="logo">🌿 Prakruthi Hostel</div>
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#rooms">Rooms</a>
-    <a href="#facilities">Facilities</a>
-    <a href="#booking">Book a Room</a>
-    <a href="#location">Location</a>
-  </nav>
-</header>
 
-<main>
-<section class="hero" id="home">
-  <div>
-    <p>WELCOME TO PRAKRUTHI HOSTEL</p>
-    <h1>Your comfort.<br>Your space.<br><span>Your stay.</span></h1>
-    <p>Explore our 4-sharing and 6-sharing room options in Vasavi Nagar, Puttur. Contact us to check rent, vacancies and facilities.</p>
-    <a class="button" href="#rooms">Explore Rooms ↓</a>
-  </div>
-  <div class="hero-image" role="img" aria-label="Illustrative shared accommodation photo"></div>
-</section>
+  <header>
+    <div class="logo">🌿 <span id="businessName">Hostel name</span></div>
 
-<section id="rooms">
-  <div class="section-title">
-    <h2>Choose Your Room</h2>
-    <p>Choose your sharing option and contact us for the current price.</p>
-  </div>
+    <nav aria-label="Main navigation">
+      <a href="#home">Home</a>
+      <a href="#rooms">Rooms</a>
+      <a href="#facilities">Facilities</a>
+      <a href="#booking">Enquiry</a>
+      <a href="#location">Location</a>
+    </nav>
+  </header>
 
-  <div class="rooms">
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1555854877-bab0e564b8d5?auto=format&fit=crop&w=900&q=80"
-           alt="Illustrative shared hostel bedroom">
-      <div class="card-content">
-        <h3>4-Sharing Room</h3>
-        <p>Shared accommodation for up to four residents.</p>
-        <div class="price">Contact for Price</div>
-        <ul>
-          <li>Four-person sharing option</li>
-          <li>Ask about available beds</li>
-          <li>Confirm included facilities</li>
-          <li>Ask about food and monthly rent</li>
-        </ul>
-        <button class="button button-green" onclick="chooseRoom('4-sharing')">Enquire About 4-Sharing</button>
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <p class="eyebrow" id="welcomeText">WELCOME</p>
+
+        <h1 id="tagline">Your comfort. Your space. Your stay.</h1>
+
+        <p id="heroDescription">Explore our room options. Contact us to check rent, vacancies and available facilities.</p>
+
+        <a class="button" href="#rooms">Explore Rooms ↓</a>
       </div>
-    </article>
 
-    <article class="card">
-      <img src="https://images.unsplash.com/photo-1522708323590-d24dbb6b0267?auto=format&fit=crop&w=900&q=80"
-           alt="Illustrative shared accommodation room">
-      <div class="card-content">
-        <h3>6-Sharing Room</h3>
-        <p>Shared accommodation for up to six residents.</p>
-        <div class="price">Contact for Price</div>
-        <ul>
-          <li>Six-person sharing option</li>
-          <li>Ask about available beds</li>
-          <li>Confirm included facilities</li>
-          <li>Ask about food and monthly rent</li>
-        </ul>
-        <button class="button button-green" onclick="chooseRoom('6-sharing')">Enquire About 6-Sharing</button>
+      <div class="hero-image" role="img" aria-label="Example shared accommodation room"></div>
+    </section>
+
+    <section id="rooms">
+      <div class="section-title">
+        <h2>Choose Your Room</h2>
+        <p>
+          Compare the available room options and contact us
+          to confirm current rent and availability.
+        </p>
       </div>
-    </article>
-  </div>
-  <p style="font-size:12px;color:#66746a;margin-top:20px">
-    Note: The room pictures are examples. Replace them with actual hostel photos before publishing.
-  </p>
-</section>
 
-<section class="features" id="facilities">
-  <div class="feature">
-    <h3>🛏️ Room Options</h3>
-    <p>Ask about 4-sharing and 6-sharing vacancies and bed availability.</p>
-  </div>
-  <div class="feature" id="food">
-    <h3>🍽️ Food Enquiry</h3>
-    <p>Ask management about vegetarian and non-vegetarian meals, menu and timings.</p>
-  </div>
-  <div class="feature">
-    <h3>📍 Convenient Location</h3>
-    <p>Vasavi Nagar, near Honda showroom, Puttur, Andhra Pradesh.</p>
-  </div>
-</section>
+      <div class="rooms" id="roomCards"></div>
 
-<section class="booking" id="booking">
-  <div>
-    <h2>Interested in staying with us?</h2>
-    <p>Send your enquiry directly through WhatsApp. Ask about room rent, vacancies, food, facilities and joining dates.</p>
-    <p><strong>WhatsApp:</strong> +91 91214 97402</p>
-    <p><strong>Location:</strong> Vasavi Nagar, Puttur</p>
-    <a class="button button-green" href="https://maps.app.goo.gl/5fyKAVXkKjAM9hAV9" target="_blank" rel="noopener">Get Directions ↗</a>
-  </div>
+      <p class="note">
+        Note: The room pictures are illustrative examples.
+        Replace them with actual hostel photos before publishing.
+        Confirm all rent amounts with management.
+      </p>
+    </section>
 
-  <form id="bookingForm">
-    <h3>Room Enquiry</h3>
-    <label for="name">Your name</label>
-    <input id="name" required placeholder="Enter your name">
+    <section class="features" id="facilities">
+      <div class="section-title">
+        <h2>Hostel Facilities</h2>
+        <p>Illustrative artwork; confirm available facilities with management.</p>
+      </div>
 
-    <label for="phone">Your phone number</label>
-    <input id="phone" type="tel" required placeholder="Enter your number">
+      <div class="feature">
+        <img src="./assets/facilities-comfort.svg" alt="Illustration of Wi-Fi, hot water and television" loading="lazy">
+        <div class="feature-content">
+          <h3>Everyday Comfort</h3>
+          <p>Free Wi-Fi, hot water and TV.</p>
+        </div>
+      </div>
 
-    <label for="room">Room preference</label>
-    <select id="room" required>
-      <option value="4-sharing">4-sharing room</option>
-      <option value="6-sharing">6-sharing room</option>
-      <option value="Either option">Either option</option>
-    </select>
+      <div class="feature">
+        <img src="./assets/facilities-services.svg" alt="Illustration of laundry and housekeeping services" loading="lazy">
+        <div class="feature-content">
+          <h3>Helpful Services</h3>
+          <p>Laundry service and housekeeping.</p>
+        </div>
+      </div>
 
-    <label for="date">Expected joining date</label>
-    <input id="date" type="date">
+      <div class="feature">
+        <img src="./assets/facilities-utilities.svg" alt="Illustration of power backup and RO drinking water" loading="lazy">
+        <div class="feature-content">
+          <h3>Daily Essentials</h3>
+          <p>Power backup and RO drinking water.</p>
+        </div>
+      </div>
 
-    <label for="message">Questions</label>
-    <textarea id="message" rows="3" placeholder="Ask about rent, food or availability"></textarea>
+      <div class="feature">
+        <img src="./assets/facilities-security-parking.svg" alt="Illustration of a secure hostel and parking space" loading="lazy">
+        <div class="feature-content">
+          <h3>Security &amp; Parking</h3>
+          <p>Security arrangements and parking space.</p>
+        </div>
+      </div>
 
-    <button class="button button-green" type="submit">Send Enquiry on WhatsApp ↗</button>
-  </form>
-</section>
+      <div class="feature feature-location">
+        <div class="feature-content">
+          <h3>📍 Convenient Location</h3>
+          <p><span id="featureAddress">Contact us for location details.</span></p>
+        </div>
+      </div>
+    </section>
 
-<section class="location" id="location">
-  <h2>Find Prakruthi Hostel</h2>
-  <p>Vasavi Nagar, near Honda showroom<br>Puttur, Andhra Pradesh</p>
-  <a class="button" href="https://maps.app.goo.gl/5fyKAVXkKjAM9hAV9" target="_blank" rel="noopener">Open Google Maps</a>
-</section>
-</main>
+    <section class="booking" id="booking">
+      <div>
+        <h2>Interested in staying with us?</h2>
 
-<footer>
-  <p>© <span id="year"></span> Prakruthi Hostel. All rights reserved.</p>
-  <p>Room rent and availability must be confirmed directly with management.</p>
-</footer>
+        <p>
+          Send your enquiry through WhatsApp. Ask about
+          room rent, vacancies, food, facilities and
+          your expected joining date.
+        </p>
 
-<a class="whatsapp" href="https://wa.me/919121497402" target="_blank" rel="noopener">☏ WhatsApp</a>
+        <p>
+          <strong>WhatsApp:</strong>
+          <a id="phoneLink" href="#booking">
+            <span id="phoneDisplay">Contact us</span>
+          </a>
+        </p>
 
-<script>
-const WHATSAPP_NUMBER = "919121497402";
+        <p>
+          <strong>Location:</strong> <span id="shortAddress">Contact us for location details.</span>
+        </p>
 
-function chooseRoom(roomType) {
-  document.getElementById("room").value = roomType;
-  document.getElementById("booking").scrollIntoView({behavior: "smooth"});
-}
+        <a
+          class="button button-green"
+          id="bookingMapLink"
+          href="#location"
+          target="_blank"
+          rel="noopener noreferrer">
+          Get Directions ↗
+        </a>
+      </div>
 
-document.getElementById("bookingForm").addEventListener("submit", function(event) {
-  event.preventDefault();
+      <form id="bookingForm">
+        <h3>Room Enquiry</h3>
 
-  const name = document.getElementById("name").value.trim();
-  const phone = document.getElementById("phone").value.trim();
-  const room = document.getElementById("room").value;
-  const date = document.getElementById("date").value || "Not specified";
-  const message = document.getElementById("message").value.trim() || "Please share rent and availability.";
+        <label for="name">Your name</label>
+        <input
+          id="name"
+          name="name"
+          type="text"
+          autocomplete="name"
+          maxlength="80"
+          required
+          placeholder="Enter your name">
 
-  const text =
-    "Hello Prakruthi Hostel! I want to enquire about a room.\n" +
-    "Name: " + name + "\n" +
-    "My phone: " + phone + "\n" +
-    "Room: " + room + "\n" +
-    "Joining date: " + date + "\n" +
-    "Questions: " + message;
+        <label for="phone">Your phone number</label>
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
+          inputmode="tel"
+          autocomplete="tel"
+          pattern="[+0-9() -]{7,20}"
+          title="Enter a valid phone number"
+          required
+          placeholder="Enter your number">
 
-  const url = "https://wa.me/" + WHATSAPP_NUMBER + "?text=" + encodeURIComponent(text);
-  window.open(url, "_blank");
-});
+        <label for="room">Room preference</label>
+        <select id="room" name="room" required>
+          <option value="" disabled selected>
+            Select a room type
+          </option>
+          <option value="Either option">Either option</option>
+        </select>
 
-document.getElementById("year").textContent = new Date().getFullYear();
-</script>
+        <label for="date">Expected joining date</label>
+        <input
+          id="date"
+          name="date"
+          type="date">
+
+        <label for="message">Questions</label>
+        <textarea
+          id="message"
+          name="message"
+          rows="3"
+          maxlength="1000"
+          placeholder="Ask about rent, food or availability"></textarea>
+
+        <button
+          id="submitButton"
+          class="button button-green"
+          type="submit">
+          Send Enquiry on WhatsApp ↗
+        </button>
+        <p id="formStatus" aria-live="polite"></p>
+      </form>
+    </section>
+
+    <section class="location" id="location">
+      <h2>Find <span id="locationBusinessName">the hostel</span></h2>
+
+      <p id="fullAddress">Contact us for location details.</p>
+
+      <a
+        class="button"
+        id="locationMapLink"
+        href="#location"
+        target="_blank"
+        rel="noopener noreferrer">
+        Open Google Maps
+      </a>
+    </section>
+  </main>
+
+  <footer>
+    <p>
+      © <span id="year"></span>
+      <span id="footerBusinessName">Hostel name</span>. All rights reserved.
+    </p>
+
+    <p>
+      Availability and payment terms should be confirmed
+      directly with management.
+    </p>
+  </footer>
+
+  <a
+    class="whatsapp"
+    id="whatsappLink"
+    href="#booking"
+    target="_blank"
+    rel="noopener noreferrer"
+    aria-label="Contact the hostel on WhatsApp">
+    ☎ WhatsApp
+  </a>
+
+  <script type="module">
+    import { SITE_CONFIG } from "./Config.js";
+
+    "use strict";
+
+    const getElement = (id) => document.getElementById(id);
+    const roomSelect = getElement("room");
+    const formStatus = getElement("formStatus");
+    const whatsappDigits = SITE_CONFIG.whatsappNumber.replace(/\D/g, "");
+    const whatsappConfigured = /^\d{8,15}$/.test(whatsappDigits);
+
+    document.title = `${SITE_CONFIG.businessName} | Hostel accommodation`;
+    getElement("metaDescription").content =
+      `Explore room options at ${SITE_CONFIG.businessName}. Contact us for rent and availability.`;
+    getElement("businessName").textContent = SITE_CONFIG.businessName;
+    getElement("locationBusinessName").textContent = SITE_CONFIG.businessName;
+    getElement("footerBusinessName").textContent = SITE_CONFIG.businessName;
+    getElement("welcomeText").textContent = `WELCOME TO ${SITE_CONFIG.businessName.toUpperCase()}`;
+    getElement("tagline").textContent = SITE_CONFIG.tagline;
+    getElement("heroDescription").textContent =
+      `Explore our room options in ${SITE_CONFIG.address}. Contact us to check rent, vacancies and available facilities.`;
+    getElement("phoneDisplay").textContent = SITE_CONFIG.phoneDisplay;
+    getElement("phoneLink").href = `tel:${SITE_CONFIG.phoneDisplay.replace(/[^\d+]/g, "")}`;
+    getElement("shortAddress").textContent = SITE_CONFIG.address.split(",").slice(0, 2).join(",").trim();
+    getElement("featureAddress").textContent = SITE_CONFIG.address;
+    getElement("fullAddress").textContent = SITE_CONFIG.address;
+    getElement("year").textContent = new Date().getFullYear();
+    getElement("locationMapLink").href = SITE_CONFIG.mapsUrl;
+    getElement("bookingMapLink").href = SITE_CONFIG.mapsUrl;
+
+    if (whatsappConfigured) {
+      getElement("whatsappLink").href = `https://wa.me/${whatsappDigits}`;
+    } else {
+      getElement("whatsappLink").hidden = true;
+      formStatus.textContent = "The owner needs to add a valid WhatsApp number in Config.js.";
+      getElement("submitButton").disabled = true;
+    }
+
+    if (!Array.isArray(SITE_CONFIG.roomOptions) || SITE_CONFIG.roomOptions.length === 0) {
+      throw new Error("Add at least one room to SITE_CONFIG.roomOptions in Config.js.");
+    }
+
+    for (const room of SITE_CONFIG.roomOptions) {
+      const card = document.createElement("article");
+      card.className = "card";
+
+      if (room.image) {
+        const image = document.createElement("img");
+        image.src = room.image;
+        image.alt = `${room.title} example`;
+        image.loading = "lazy";
+        card.append(image);
+      }
+
+      const content = document.createElement("div");
+      content.className = "card-content";
+
+      const title = document.createElement("h3");
+      title.textContent = room.title;
+
+      const description = document.createElement("p");
+      description.textContent = room.description;
+
+      const price = document.createElement("div");
+      price.className = "price";
+      price.textContent = room.rentLabel;
+
+      content.append(title, description, price);
+
+      if (room.rentOptions) {
+        const rentOptions = document.createElement("p");
+        rentOptions.className = "rent-options";
+        rentOptions.textContent = room.rentOptions;
+        content.append(rentOptions);
+      }
+
+      const details = document.createElement("ul");
+      ["Ask about available beds", "Confirm included facilities", "Ask about food and rent"].forEach((item) => {
+        const detail = document.createElement("li");
+        detail.textContent = item;
+        details.append(detail);
+      });
+
+      const enquireButton = document.createElement("button");
+      enquireButton.className = "button button-green";
+      enquireButton.type = "button";
+      enquireButton.textContent = `Enquire About ${room.title}`;
+      enquireButton.addEventListener("click", () => {
+        roomSelect.value = room.id;
+        getElement("booking").scrollIntoView({ behavior: "smooth", block: "start" });
+        roomSelect.focus({ preventScroll: true });
+      });
+
+      content.append(details, enquireButton);
+      card.append(content);
+      getElement("roomCards").append(card);
+
+      const option = document.createElement("option");
+      option.value = room.id;
+      option.textContent = room.title;
+      roomSelect.add(option, roomSelect.options[roomSelect.options.length - 1]);
+    }
+
+    const bookingForm = getElement("bookingForm");
+
+    if (bookingForm) {
+      bookingForm.addEventListener("submit", function (event) {
+        event.preventDefault();
+
+        if (!bookingForm.reportValidity()) {
+          return;
+        }
+
+        const name = getElement("name").value.trim();
+        const phone = getElement("phone").value.trim();
+        const room = roomSelect.value;
+        const date = getElement("date").value || "Not specified";
+        const message = getElement("message").value.trim() || "Please share rent and availability.";
+
+        if (!name || !phone || !room) {
+          formStatus.textContent = "Please complete all required fields.";
+          return;
+        }
+
+        const enquiryText = [
+          `Hello ${SITE_CONFIG.businessName}! I want to enquire about a room.`,
+          "Name: " + name,
+          "My phone: " + phone,
+          "Room: " + room,
+          "Joining date: " + date,
+          "Questions: " + message
+        ].join("\n");
+
+        const whatsappURL = `https://wa.me/${whatsappDigits}?text=${encodeURIComponent(enquiryText)}`;
+
+        window.location.href = whatsappURL;
+      });
+    }
+  </script>
+
 </body>
 </html>
